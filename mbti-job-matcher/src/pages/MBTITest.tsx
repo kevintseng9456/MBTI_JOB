@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,7 @@ const personalityTypes = [
     careers: '科學家、系統分析師、建築師、工程師、法官',
     strengths: '創新、獨立、戰略性思考、高度理性',
     weaknesses: '過於批判、情感表達困難、完美主義',
+    image: '/16MBTI/INTJ.png'
   },
   {
     type: 'INTP',
@@ -18,6 +19,7 @@ const personalityTypes = [
     careers: '程序員、物理學家、化學家、分析師、哲學家',
     strengths: '邏輯思維、創意豐富、客觀分析、獨立思考',
     weaknesses: '過於理論化、忽視情感、容易分心',
+    image: '/16MBTI/INTP.png'
   },
   {
     type: 'ENTJ',
@@ -26,6 +28,7 @@ const personalityTypes = [
     careers: '企業高管、律師、管理顧問、政治家、企業家',
     strengths: '領導能力、自信、決策果斷、長遠規劃',
     weaknesses: '不耐煩、傲慢、過於主導',
+    image: '/16MBTI/ENTJ.png'
   },
   {
     type: 'ENTP',
@@ -34,6 +37,7 @@ const personalityTypes = [
     careers: '企業家、發明家、記者、市場營銷專家、律師',
     strengths: '創新思維、適應力強、口才出眾、知識廣博',
     weaknesses: '爭論好勇鬥狠、容易分心、不切實際',
+    image: '/16MBTI/ENTP.png'
   },
   {
     type: 'INFJ',
@@ -42,6 +46,7 @@ const personalityTypes = [
     careers: '心理諮詢師、作家、教師、藝術家、人力資源專員',
     strengths: '富有同情心、有遠見、有創意、有原則',
     weaknesses: '過於理想化、容易倦怠、過於完美主義',
+    image: '/16MBTI/INFJ.png'
   },
   {
     type: 'INFP',
@@ -50,6 +55,7 @@ const personalityTypes = [
     careers: '作家、心理諮詢師、社工、教師、藝術家',
     strengths: '富有同情心、創意豐富、開放思想、靈活適應',
     weaknesses: '過於理想化、不切實際、情緒化',
+    image: '/16MBTI/INFP.png'
   },
   {
     type: 'ENFJ',
@@ -58,6 +64,7 @@ const personalityTypes = [
     careers: '教師、人力資源經理、銷售經理、政治家、心理諮詢師',
     strengths: '富有同理心、領導能力強、善於溝通、有責任感',
     weaknesses: '過於理想化、優柔寡斷、過度敏感',
+    image: '/16MBTI/ENFJ.png'
   },
   {
     type: 'ENFP',
@@ -66,6 +73,7 @@ const personalityTypes = [
     careers: '記者、演員、公關專員、藝術家、顧問',
     strengths: '熱情洋溢、創意十足、適應力強、溝通技巧佳',
     weaknesses: '注意力分散、組織能力差、過度情緒化',
+    image: '/16MBTI/ENFP.png'
   },
   {
     type: 'ISTJ',
@@ -74,6 +82,7 @@ const personalityTypes = [
     careers: '會計師、審計師、財務分析師、項目經理、軍人',
     strengths: '誠實可靠、注重細節、有組織、有耐心',
     weaknesses: '固執、不善變通、情感表達困難',
+    image: '/16MBTI/ISTJ.png'
   },
   {
     type: 'ISFJ',
@@ -82,6 +91,7 @@ const personalityTypes = [
     careers: '護士、小學教師、行政助理、社工、圖書管理員',
     strengths: '可靠、耐心、細心、盡職盡責',
     weaknesses: '過於謙遜、不善拒絕、抗拒變化',
+    image: '/16MBTI/ISFJ.png'
   },
   {
     type: 'ESTJ',
@@ -90,6 +100,7 @@ const personalityTypes = [
     careers: '企業主管、銀行經理、法官、政府官員、項目經理',
     strengths: '組織能力強、務實、忠誠、直接坦率',
     weaknesses: '固執、不善變通、不夠敏感',
+    image: '/16MBTI/ESTJ.png'
   },
   {
     type: 'ESFJ',
@@ -98,6 +109,7 @@ const personalityTypes = [
     careers: '銷售代表、護士、教師、人力資源專員、公關專員',
     strengths: '善解人意、合作、可靠、有耐心',
     weaknesses: '過於敏感、需要認可、不善處理批評',
+    image: '/16MBTI/ESFJ.png'
   },
   {
     type: 'ISTP',
@@ -106,6 +118,7 @@ const personalityTypes = [
     careers: '機械師、工程師、技師、飛行員、運動員',
     strengths: '靈活、冷靜、實際、理性',
     weaknesses: '冷漠、容易厭倦、魯莽',
+    image: '/16MBTI/ISTP.png'
   },
   {
     type: 'ISFP',
@@ -114,6 +127,7 @@ const personalityTypes = [
     careers: '藝術家、音樂家、造型師、室內設計師、廚師',
     strengths: '富有創意、靈活、有同情心、有審美眼光',
     weaknesses: '過於競爭、容易感到壓力、不善規劃',
+    image: '/16MBTI/ISFP.png'
   },
   {
     type: 'ESTP',
@@ -122,6 +136,7 @@ const personalityTypes = [
     careers: '企業家、銷售人員、市場營銷專員、警察、消防員',
     strengths: '大膽、理性、直接、社交能力強',
     weaknesses: '不耐煩、冒險、容易厭倦',
+    image: '/16MBTI/ESTP.png'
   },
   {
     type: 'ESFP',
@@ -130,8 +145,10 @@ const personalityTypes = [
     careers: '演員、舞者、活動策劃師、導遊、銷售代表',
     strengths: '樂觀、友好、有創意、實際',
     weaknesses: '容易分心、敏感、衝動',
+    image: '/16MBTI/ESFP.png'
   },
 ];
+
 
 const MBTITest: React.FC = () => {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -188,24 +205,27 @@ const MBTITest: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="bg-[#1C2833] rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-[#3E4C59]">
+              <div className="bg-[#1C2833] rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-[#3E4C59] flex flex-col h-full">
                 <div className="bg-gradient-to-br from-[#2C3E50] to-[#3E4C59] p-6">
+                  <img src={personality.image} alt={personality.type} className="w-32 h-32 mx-auto mb-4 rounded-full" />
                   <h2 className="text-4xl font-bold text-center">{personality.type}</h2>
                   <h3 className="text-xl font-semibold text-center mt-2 text-[#D4AF37]">{personality.title}</h3>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex-grow flex flex-col justify-between">
                   <p className="text-[#E0E0E0] mb-4">{personality.description}</p>
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-[#D4AF37]">建議職業：</h4>
-                    <p className="text-[#B0B0B0]">{personality.careers}</p>
-                  </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-[#D4AF37]">優點：</h4>
-                    <p className="text-[#B0B0B0]">{personality.strengths}</p>
-                  </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-[#D4AF37]">缺點：</h4>
-                    <p className="text-[#B0B0B0]">{personality.weaknesses}</p>
+                    <div className="mb-4">
+                      <h4 className="font-semibold mb-2 text-[#D4AF37]">建議職業：</h4>
+                      <p className="text-[#B0B0B0]">{personality.careers}</p>
+                    </div>
+                    <div className="mb-4">
+                      <h4 className="font-semibold mb-2 text-[#D4AF37]">優點：</h4>
+                      <p className="text-[#B0B0B0]">{personality.strengths}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2 text-[#D4AF37]">缺點：</h4>
+                      <p className="text-[#B0B0B0]">{personality.weaknesses}</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@
 body, #root {
   background-color: #121212;
   min-height: 100vh;
+  color: #FFFFFF;
 }
 
 body {
@@ -14,10 +15,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* 自定義滾軸樣式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C2833;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3E4C59;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
 }
